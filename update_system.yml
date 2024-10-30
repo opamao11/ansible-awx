@@ -1,0 +1,19 @@
+---
+- name: Update System and Apply Security Patches
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Update APT package list
+      apt:
+        update_cache: yes
+
+    - name: Upgrade all packages to the latest version
+      apt:
+        upgrade: full
+
+    - name: Apply security updates only
+      apt:
+        upgrade: dist
+        cache_valid_time: 3600
+        allow_unauthenticated: no
