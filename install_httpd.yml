@@ -1,6 +1,7 @@
 ---
 - name: Install HTTPD on Ubuntu
   hosts: all
+  gather_facts: no
   become: true
   tasks:
     - name: Update APT package list
@@ -11,3 +12,4 @@
       apt:
         name: apache2
         state: present
+
