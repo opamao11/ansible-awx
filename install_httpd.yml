@@ -1,0 +1,13 @@
+---
+- name: Install HTTPD on Ubuntu
+  hosts: all
+  become: true
+  tasks:
+    - name: Update APT package list
+      apt:
+        update_cache: yes
+
+    - name: Install Apache (HTTPD)
+      apt:
+        name: apache2
+        state: present
