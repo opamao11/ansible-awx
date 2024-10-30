@@ -1,0 +1,15 @@
+---
+- name: Uninstall HTTPD (Apache) from Ubuntu
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Uninstall Apache (HTTPD)
+      apt:
+        name: apache2
+        state: absent
+
+    - name: Remove any remaining Apache configuration files
+      file:
+        path: /etc/apache2
+        state: absent
